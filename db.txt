@@ -6,6 +6,6 @@ use Bilty;
 
 TABLES
 
-CREATE TABLE Bilty_Master (SNO varchar(100) PRIMARY KEY, Consignor varchar(100) NOT NULL, CR_GSTNO varchar(100), Consignee varchar(100) NOT NULL, CN_GSTNO varchar(100), Date_Bill varchar(100) NOT NULL, From varchar(100) NOT NULL, To varchar(100) NOT NULL, Payment_Status varchar(100) NOT NULL);  
+CREATE TABLE Bilty_Master (SNO varchar(100) PRIMARY KEY, Consignor varchar(100), CR_GSTNO varchar(100), Consignee varchar(100), CN_GSTNO varchar(100), Date_Bill varchar(100), From_City varchar(100), To_City varchar(100), Payment_Status varchar(100), freight int, hammali int, bilty_charge int, grand_total int);  
 
-CREATE TABLE Bilty_Desc (SNO varchar(100) NOT NULL, Packages varchar(100), Description varchar(100), Weight varchar(100), FOREIGN KEY (SNO) REFERENCES Bilty_Master(SNO));
+CREATE TABLE Bilty_Desc (SNO varchar(100), Packages varchar(100), Description varchar(100), Weight varchar(100), FOREIGN KEY (SNO) REFERENCES Bilty_Master(SNO));
