@@ -5,6 +5,7 @@
  */
 package mypackage;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -111,6 +112,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
         txtDescription = new javax.swing.JTextField();
         txtWeight = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
+        lblValidate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -227,6 +229,11 @@ public class BuiltyFrame extends javax.swing.JFrame {
         jLabel10.setText("Grand Total: ");
 
         txtSno.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSnoKeyTyped(evt);
+            }
+        });
 
         txtDate.setEditable(false);
         txtDate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -238,8 +245,18 @@ public class BuiltyFrame extends javax.swing.JFrame {
         txtTo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         txtFrieght.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtFrieght.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFrieghtKeyTyped(evt);
+            }
+        });
 
         txtHammali.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtHammali.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHammaliKeyTyped(evt);
+            }
+        });
 
         txtBilty.setEditable(false);
         txtBilty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -248,8 +265,19 @@ public class BuiltyFrame extends javax.swing.JFrame {
                 txtBiltyActionPerformed(evt);
             }
         });
+        txtBilty.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBiltyKeyTyped(evt);
+            }
+        });
 
+        txtGrand.setEditable(false);
         txtGrand.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtGrand.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGrandKeyTyped(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 0, 51));
@@ -426,10 +454,20 @@ public class BuiltyFrame extends javax.swing.JFrame {
         jLabel17.setText("Weight Actual:");
 
         txtPackages.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtPackages.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPackagesKeyTyped(evt);
+            }
+        });
 
         txtDescription.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         txtWeight.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtWeight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtWeightKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -474,6 +512,9 @@ public class BuiltyFrame extends javax.swing.JFrame {
             }
         });
 
+        lblValidate.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblValidate.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -497,14 +538,15 @@ public class BuiltyFrame extends javax.swing.JFrame {
                         .addGap(147, 147, 147)
                         .addComponent(btnDelete)
                         .addGap(206, 206, 206)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCalculate)
                         .addGap(47, 47, 47)
                         .addComponent(btnClear)
                         .addGap(53, 53, 53)
                         .addComponent(btnExit))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblValidate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
@@ -532,6 +574,8 @@ public class BuiltyFrame extends javax.swing.JFrame {
                             .addComponent(btnCalculate)
                             .addComponent(btnClear)
                             .addComponent(btnExit))
+                        .addGap(47, 47, 47)
+                        .addComponent(lblValidate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -550,7 +594,8 @@ public class BuiltyFrame extends javax.swing.JFrame {
             int i = JOptionPane.showConfirmDialog(null,"Are you sure, you want to clear this bill?");
             if(i==0)
             {
-                    txtBilty.setText("");
+                    String sno = txtSno.getText().toString();
+                    //txtBilty.setText("");
                     txtConsignor_GST.setText("");
                     txtConsignee.setText("");
                     txtConsignee_GST.setText("");
@@ -562,24 +607,27 @@ public class BuiltyFrame extends javax.swing.JFrame {
                     txtTo.setText("");
                     txtWeight.setText("");
                     txtPackages.setText("");
-                    txtPackages.setText("");
+                    txtDescription.setText("");
                     
                     
                     rdbBilled.setSelected(false);
                     rdbPaid.setSelected(false);
                     rdbToPay.setSelected(false);
                     
-
+                    txtSno.setEnabled(true);
+                    txtSno.setEditable(true);
+                    
                     DefaultTableModel tbl = (DefaultTableModel) tblData.getModel();
                     tbl.setRowCount(0);
-                    tbl.setRowCount(13);
-                    
-//                    String del = "DELETE FROM BILL WHERE BILLNO = '"+cust_billno+"'";
-//                    stmt.executeUpdate(del);
-//                    
-//                    String delBill = "DELETE FROM USER WHERE BILLNO = '"+cust_billno+"'";
-//                    stmt.executeUpdate(delBill);
-                    
+                   
+                    if(!(sno.equals("")))
+                    {
+                        String delBill = "DELETE FROM Bilty_Desc WHERE SNO = '"+sno+"'";
+                        stmt.executeUpdate(delBill);
+
+                        String del = "DELETE FROM Bilty_Master WHERE SNO = '"+sno+"'";
+                        stmt.executeUpdate(del);
+                    }
                     JOptionPane.showMessageDialog(null, "Bill deleted!");
             }
         }
@@ -604,8 +652,6 @@ public class BuiltyFrame extends javax.swing.JFrame {
             String from = "Indore";
             String payment_status = "";
             
-            double friegth = 0;
-            double hammali = 0;
             double  bilty_charge = 5.0;
             
             // Saving Values into variable  
@@ -631,29 +677,46 @@ public class BuiltyFrame extends javax.swing.JFrame {
                 payment_status = "Billed";
             }
             
-            friegth = (Double.parseDouble(txtFrieght.getText()));
-            hammali = (Double.parseDouble(txtHammali.getText()));
-            bilty_charge = (Double.parseDouble(txtBilty.getText()));
+            String frieght_str = txtFrieght.getText();
+            String hammali_str = txtHammali.getText();
             
+            double friegth = 0;
+            double hammali = 0;
+            
+            if(frieght_str != null && frieght_str.length() > 0)
+            {
+               friegth = (Double.parseDouble(txtFrieght.getText()));
+            }
+            
+            if(hammali_str != null && hammali_str.length() > 0)
+            {
+                hammali = (Double.parseDouble(txtHammali.getText()));
+            }
+                  
             double grand_total = friegth + hammali + bilty_charge;
             
-            
-            if(sno_flag == 1)
+            if(!(consignor.equals("") || consignee.equals("") || sno.equals("") || to.equals("") || payment_status.equals("")))
             {
-                String upd_qry = "UPDATE Bilty_Master SET Consignor = '"+consignor+"', CR_GSTNO = '"+consignor_gst+"' , Consignee =  '"+consignee+"' , CN_GSTNO = '"+consignee_gst+"', Date_Bill = '"+bill_date+"', From_City= '"+from+"', To_City= '"+to+"', Payment_Status= '"+payment_status+"',freight= "+friegth+", hammali= "+hammali+",bilty_charge= "+bilty_charge+", grand_total= "+grand_total+"  WHERE SNO = '"+sno+"' "; 
-                stmt.executeUpdate(upd_qry);
-                
-                txtGrand.setText(grand_total + "");
-                JOptionPane.showMessageDialog(null, "Data is successfully saved! Please proceed for printing");
+                lblValidate.setText("");
+                    if(sno_flag == 1)
+                    {
+                        String upd_qry = "UPDATE Bilty_Master SET Consignor = '"+consignor+"', CR_GSTNO = '"+consignor_gst+"' , Consignee =  '"+consignee+"' , CN_GSTNO = '"+consignee_gst+"', Date_Bill = '"+bill_date+"', From_City= '"+from+"', To_City= '"+to+"', Payment_Status= '"+payment_status+"',freight= "+friegth+", hammali= "+hammali+",bilty_charge= "+bilty_charge+", grand_total= "+grand_total+"  WHERE SNO = '"+sno+"' "; 
+                        stmt.executeUpdate(upd_qry);
+
+                        txtGrand.setText(grand_total + "");
+                        JOptionPane.showMessageDialog(null, "Data is successfully saved! Please proceed for printing");
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Please select the correct SNO");
+                        txtSno.requestFocusInWindow();
+                    }
+            
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Please select the correct SNO");
-                txtSno.requestFocusInWindow();
-            }
-            
-            
-            
+                    lblValidate.setText("Please enter the required details!!!");
+            }   
         }
         
         catch(Exception e)
@@ -677,6 +740,9 @@ public class BuiltyFrame extends javax.swing.JFrame {
                 String descip = txtDescription.getText().trim();
                 String weight = txtWeight.getText().trim();
 
+                if(!(sno.equals("") || packg.equals("") || descip.equals("") || weight.equals("")))
+                {
+                lblValidate.setText("");
                 String ins_qry = "INSERT INTO BILTY_DESC VALUES ('"+sno+"', '"+packg+"','"+descip+"', '"+weight+"')";
                 stmt.executeUpdate(ins_qry);
 
@@ -687,6 +753,11 @@ public class BuiltyFrame extends javax.swing.JFrame {
                 txtPackages.setText("");
                 txtDescription.setText("");
                 txtWeight.setText("");
+                }
+                else
+                {
+                    lblValidate.setText("Enter the Table Details!!!");
+                }
             }
             else
             {
@@ -740,27 +811,36 @@ public class BuiltyFrame extends javax.swing.JFrame {
             String sno = txtSno.getText().trim();
            
             // Checking the SNO
-            String qry = "SELECT SNO FROM Bilty_Master WHERE SNO =  '"+sno+"'";
-            rs = stmt.executeQuery(qry);
-
-            if(rs.next() == false)
+            if(!(sno.equals("")))
             {
-                System.out.println("SNO is available");
-                txtSno.setEditable(false);
-                txtSno.setEnabled(false);
-                String ins_qry = "INSERT INTO Bilty_Master (SNO) VALUES ('"+sno+"')";
-                stmt.executeUpdate(ins_qry);
-                
-                sno_flag = 1;
-                txtTo.requestFocusInWindow();
+                    String qry = "SELECT SNO FROM Bilty_Master WHERE SNO =  '"+sno+"'";
+                    rs = stmt.executeQuery(qry);
+
+                    lblValidate.setText("");
+                    if(rs.next() == false)
+                    {
+                        System.out.println("SNO is available");
+                        txtSno.setEditable(false);
+                        txtSno.setEnabled(false);
+                        String ins_qry = "INSERT INTO Bilty_Master (SNO) VALUES ('"+sno+"')";
+                        stmt.executeUpdate(ins_qry);
+
+                        sno_flag = 1;
+                        txtTo.requestFocusInWindow();
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, sno + " SNO is already taken. Please select another");
+                        if(sno_flag != 1)
+                            txtSno.setText("");
+                        txtSno.requestFocusInWindow();
+
+                    }
             }
             else
             {
-                JOptionPane.showMessageDialog(null, sno + " SNO is already taken. Please select another");
-                if(sno_flag != 1)
-                    txtSno.setText("");
+                lblValidate.setText("Enter the SNO!!!");
                 txtSno.requestFocusInWindow();
-                        
             }
        
        }
@@ -771,6 +851,76 @@ public class BuiltyFrame extends javax.swing.JFrame {
        }
       
     }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void txtSnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSnoKeyTyped
+        // TODO add your handling code here:
+        char vchar = evt.getKeyChar();
+      
+       if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtSnoKeyTyped
+
+    private void txtFrieghtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFrieghtKeyTyped
+        // TODO add your handling code here:
+       char vchar = evt.getKeyChar();
+      
+       if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtFrieghtKeyTyped
+
+    private void txtHammaliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHammaliKeyTyped
+        // TODO add your handling code here:
+       char vchar = evt.getKeyChar();
+      
+       if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtHammaliKeyTyped
+
+    private void txtBiltyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBiltyKeyTyped
+        // TODO add your handling code here:
+        char vchar = evt.getKeyChar();
+      
+       if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtBiltyKeyTyped
+
+    private void txtGrandKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGrandKeyTyped
+        // TODO add your handling code here:
+       char vchar = evt.getKeyChar();
+      
+       if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtGrandKeyTyped
+
+    private void txtPackagesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPackagesKeyTyped
+        // TODO add your handling code here:
+        char vchar = evt.getKeyChar();
+      
+       if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtPackagesKeyTyped
+
+    private void txtWeightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyTyped
+        // TODO add your handling code here:
+        char vchar = evt.getKeyChar();
+      
+       if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtWeightKeyTyped
 
     /**
      * @param args the command line arguments
@@ -836,6 +986,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblValidate;
     private javax.swing.JRadioButton rdbBilled;
     private javax.swing.JRadioButton rdbPaid;
     private javax.swing.JRadioButton rdbToPay;
