@@ -3,7 +3,7 @@
 	<property name="ireport.zoom" value="1.7715610000000048"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<subDataset name="Table Dataset 1" uuid="b6dd9625-3e83-477c-a793-1281ada03073"/>
+<subDataset name="Table Dataset 1" uuid="b6dd9625-3e83-477c-a793-1281ada03073"/>
 	<parameter name="SNO" class="java.lang.String"/>
 	<field name="SNO" class="java.lang.String"/>
 	<field name="Consignor" class="java.lang.String"/>
@@ -275,6 +275,9 @@
 			<line>
 				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="575" y="0" width="1" height="22" isPrintWhenDetailOverflows="true" uuid="8410fdb3-dcdf-43ba-92f9-6d36ee6b0d85"/>
 			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="22" isPrintWhenDetailOverflows="true" uuid="8f990eec-5a20-4ef5-9ba2-b388a255bec7"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -302,6 +305,12 @@
 			</textField>
 			<line>
 				<reportElement x="0" y="20" width="575" height="1" uuid="9f5cd832-20a4-47ca-84fc-239bf99c279b"/>
+			</line>
+			<line>
+				<reportElement x="575" y="0" width="1" height="21" uuid="0aafb04d-f38d-406c-87a0-bfa9c0157f7a"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="21" uuid="6075384d-28a4-403c-98ce-b7b2419a6632"/>
 			</line>
 		</band>
 	</detail>
@@ -333,39 +342,6 @@
 			</line>
 			<line>
 				<reportElement x="0" y="0" width="1" height="23" uuid="493949c1-d291-45e1-b7a9-c1352477896c"/>
-			</line>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="-21" width="1" height="20" uuid="a06c01b6-dd40-4441-b774-55aa8ef5cc1e"/>
-			</line>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="575" y="-21" width="1" height="20" uuid="9366a644-3a97-442e-9ae5-fbe9bf4d815b"/>
-			</line>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="77" y="-21" width="1" height="20" uuid="d1370d4f-6b48-4d59-9a60-5125b451340f"/>
-			</line>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="275" y="-21" width="1" height="20" uuid="8bb31b88-dfd5-4863-ab39-a9c62ff85ab7"/>
-			</line>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="424" y="-21" width="1" height="20" uuid="def203cb-b70f-425a-9ca5-dfed782b0f59"/>
-			</line>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="424" y="-43" width="1" height="21" uuid="6bb0af50-aa21-4cfa-a5cf-f9a4a4e41d0e">
-					<property name="net.sf.jasperreports.export.pdf.tag.th" value="start"/>
-				</reportElement>
-			</line>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="275" y="-43" width="1" height="21" uuid="23a3dce5-0cfd-4b49-b9a8-77f90bd8a732">
-					<property name="net.sf.jasperreports.export.pdf.tag.th" value="start"/>
-				</reportElement>
-			</line>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="77" y="-43" width="1" height="21" uuid="16032ae1-a9df-4afb-b738-e676fcc49822">
-					<property name="net.sf.jasperreports.export.pdf.tag.tr" value="start"/>
-				</reportElement>
-			</line>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="-43" width="1" height="21" uuid="4f4334e3-9ec2-4e31-b6a7-63f63afe689d"/>
 			</line>
 		</band>
 	</columnFooter>
