@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="38ba156c-91e8-44af-ac7f-c1ce34e70b99">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+        <subDataset name="Table Dataset 1" uuid="b6dd9625-3e83-477c-a793-1281ada03073"/>
+	<parameter name="SNO" class="java.lang.String"/>
+        <field name="SNO" class="java.lang.String"/>
+	<field name="Date_Bill" class="java.lang.String"/>
+	<field name="Consignor" class="java.lang.String"/>
+	<field name="CR_GSTNO" class="java.lang.String"/>
+	<field name="Consignee" class="java.lang.String"/>
+	<field name="CN_GSTNO" class="java.lang.String"/>
+	<field name="From_City" class="java.lang.String"/>
+	<field name="To_City" class="java.lang.String"/>
+	<field name="Payment_Status" class="java.lang.String"/>
+	<field name="freight" class="java.lang.String"/>
+	<field name="hammali" class="java.lang.String"/>
+	<field name="bilty_charge" class="java.lang.String"/>
+	<field name="grand_total" class="java.lang.String"/>
+	<field name="Packages" class="java.lang.String"/>
+	<field name="Description" class="java.lang.String"/>
+	<field name="Weight" class="java.lang.String"/>
+        
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="47" y="0" width="181" height="20" uuid="b94453f1-ae75-436a-bf7e-9de9fef398f8"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MAHESHWARI ROAD LINES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="40" width="336" height="20" uuid="14682ebf-26d2-4a09-9394-c5e3af288da3"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[19/1, Choudhary Complex, Teen Imli Chouraha, Indore Mo.: 7999889826]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="55" y="20" width="198" height="20" uuid="a3d408c7-6cc9-4604-9bde-63c89ecb465d"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Logistics Contractor & Commission Agent]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="60" width="275" height="19" uuid="39a83920-6a52-4214-acd3-9d8016e5de29"/>
+				<text><![CDATA[DAILY PARCEL SERVICE: INDORE TO ALL OVER M.P.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="20" width="51" height="20" uuid="c6494d91-cb67-4494-ab7d-40dfc89850ff"/>
+				<text><![CDATA[G.R.NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="40" width="51" height="20" uuid="d69b8909-1c25-4b51-b151-bf59072feca2"/>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="20" width="100" height="20" uuid="99291538-8be0-4a98-94c0-5e099d861244"/>
+				<textFieldExpression><![CDATA[$F{SNO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="40" width="100" height="20" uuid="94f28b06-4f9a-442c-a3cb-56e38f226eb5"/>
+				<textFieldExpression><![CDATA[$F{Date_Bill}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="5" width="100" height="20" uuid="69cb57a0-5272-4f85-8933-aee77bebefb7"/>
+				<text><![CDATA[Consignor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="25" width="100" height="20" uuid="c434e4c0-7a06-4b42-8fce-66ac01d761a9"/>
+				<text><![CDATA[GST No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="45" width="100" height="20" uuid="f824c3fe-5997-4495-a8d5-ba6b4c546fed"/>
+				<text><![CDATA[Consignee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="65" width="100" height="20" uuid="261b080c-6c44-4743-acff-998100d849d7"/>
+				<text><![CDATA[GST No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="5" width="61" height="20" uuid="32639563-464e-417c-a5ff-c31b38282f8a"/>
+				<text><![CDATA[FROM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="25" width="61" height="20" uuid="478895e3-cd4d-4a4f-b2cf-f8082fc0f383"/>
+				<text><![CDATA[TO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="45" width="100" height="20" uuid="8be94945-c70a-407f-b95a-d3a7f9c9e242"/>
+				<text><![CDATA[PAYMENT_STATUS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="445" y="5" width="100" height="20" uuid="f0a7ea2f-2a75-4c1a-ad01-dca22f37a18e"/>
+				<textFieldExpression><![CDATA[$F{From_City}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="25" width="100" height="20" uuid="d11f43a5-1368-4049-94bd-1a9025cf1191"/>
+				<textFieldExpression><![CDATA[$F{To_City}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="473" y="45" width="96" height="20" uuid="44b75f7a-0d44-401d-88b6-ecdeba271e75"/>
+				<textFieldExpression><![CDATA[$F{Payment_Status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="128" y="5" width="100" height="20" uuid="e264f4ff-4933-417a-ae8b-7f9fda26e416"/>
+				<textFieldExpression><![CDATA[$F{Consignor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="25" width="100" height="20" uuid="3c07ab7a-3009-4b6d-be2e-6d175ba82426"/>
+				<textFieldExpression><![CDATA[$F{CR_GSTNO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="128" y="45" width="100" height="20" uuid="ab463bf9-9162-45ca-9237-834358586a4a"/>
+				<textFieldExpression><![CDATA[$F{Consignee}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="67" width="100" height="20" uuid="67c8aa48-486a-48d0-bd7d-b856e9f295df"/>
+				<textFieldExpression><![CDATA[$F{CN_GSTNO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="0" width="100" height="20" uuid="50a5b6e2-2bbc-44f0-9710-5a0c12370c1b"/>
+				<text><![CDATA[PACKAGES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="0" width="100" height="20" uuid="b294eaad-b164-4361-935c-b99bbe0cf240"/>
+				<text><![CDATA[DESCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="0" width="100" height="20" uuid="58ba600f-6f54-474f-922f-727af9b0f3c8"/>
+				<text><![CDATA[WEIGHT ACTUAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="98" splitType="Stretch">
+			<textField>
+				<reportElement x="8" y="9" width="63" height="20" uuid="dc8c15b8-ac08-410c-a090-e6f19e42d98a"/>
+				<textFieldExpression><![CDATA[$F{Packages}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="9" width="143" height="20" uuid="e043fa6d-77bf-4236-bae5-d62cda2ea54a"/>
+				<textFieldExpression><![CDATA[$F{Description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="9" width="74" height="20" uuid="d59ac91c-dfe1-4410-b81e-3b636ca34b96"/>
+				<textFieldExpression><![CDATA[$F{Weight}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="9" width="100" height="20" uuid="c1cf6c39-231f-4466-8ff6-616726c3e243"/>
+				<textFieldExpression><![CDATA[$F{freight}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="40" width="100" height="20" uuid="a40a5625-fc2d-4004-a747-53ff082490f6"/>
+				<textFieldExpression><![CDATA[$F{hammali}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="69" width="100" height="20" uuid="696c20c3-c30c-4fa3-9860-28db7cd60a43"/>
+				<textFieldExpression><![CDATA[$F{bilty_charge}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="373" y="9" width="43" height="20" uuid="d765213f-b007-4bdc-b64f-cb8ea5f8687f"/>
+				<text><![CDATA[Freight]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="372" y="40" width="49" height="20" uuid="38446ae0-a3a7-4757-9852-677c130d11a5"/>
+				<text><![CDATA[Hammali]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="372" y="69" width="62" height="20" uuid="c6ef3d89-af5e-4096-ba5f-3be8b82ca38a"/>
+				<text><![CDATA[Bilty Charge]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="5" width="244" height="20" uuid="1e99ce4a-fc83-4321-9962-6ac1319eb75d"/>
+				<text><![CDATA[GOODS BOOKED & CARRIED AT OWNER'S RISK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="5" width="59" height="20" uuid="afd19054-cb4d-4c88-a81d-aa7b87164c2d"/>
+				<text><![CDATA[Grand Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="473" y="5" width="72" height="20" uuid="cf1a0b07-325e-4d15-8464-fffbd99e4164"/>
+				<textFieldExpression><![CDATA[$F{grand_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="34" width="414" height="20" uuid="26fc6dd0-b34c-4d88-88f6-07c0b7430bd1"/>
+				<text><![CDATA[Note: No responsible for Leakage & Breakage. Company is not responsible for Re-booking.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="14" width="209" height="20" uuid="3909e51a-d7a7-4364-a831-a7330d187f44"/>
+				<text><![CDATA[All Subject To Indore Jurisdication Only]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="424" y="34" width="145" height="20" uuid="a8a38806-4bbb-488b-8f27-8447eb95e759"/>
+				<text><![CDATA[MAHESHWARI ROAD LINE]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

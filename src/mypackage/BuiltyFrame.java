@@ -6,6 +6,7 @@
 package mypackage;
 
 import java.awt.event.KeyEvent;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,9 +14,19 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -704,7 +715,35 @@ public class BuiltyFrame extends javax.swing.JFrame {
                         stmt.executeUpdate(upd_qry);
 
                         txtGrand.setText(grand_total + "");
-                        JOptionPane.showMessageDialog(null, "Data is successfully saved! Please proceed for printing");
+                        //JOptionPane.showMessageDialog(null, "Data is successfully saved! Please proceed for printing");
+                        
+                       
+                        // Generating JASPER REPORTS 
+                        String reportUrl = "/mypackage/BiltyReceipt.jrxml"; //path of your report source.
+                        InputStream reportFile = null;
+                        reportFile = getClass().getResourceAsStream(reportUrl);
+                        //reportFile = new FileInputStream(reportUrl);
+                        JasperDesign jasdi=JRXmlLoader.load(reportFile);
+                        //String billquery = "SELECT USER.BILLNO, USER.NAME, USER.CONTACT_NO, USER.ADDRESS, USER.GSTIN, USER.BILL_DATE, USER.TOTAL_AMOUNT, BILL.HSN_CODE, BILL.ITEM_NAME, BILL.QUANTITY, BILL.TAX_SLAB, BILL.SELLING_PRICE, BILL.BASIC_PRICE, BILL.CGST, BILL.SGST, BILL.TOTAL_PRICE FROM BILL, USER WHERE USER.BILLNO = BILL.BILLNO AND SNO = '"+sno+"'";
+                        String billquery = "SELECT Bilty_Master.SNO, Bilty_Master.Consignor, Bilty_Master.CR_GSTNO, Bilty_Master.Consignee, Bilty_Master.CN_GSTNO, Bilty_Master.Date_Bill, Bilty_Master.From_City, Bilty_Master.To_City, Bilty_Master.Payment_Status, Bilty_Master.freight, Bilty_Master.hammali, Bilty_Master.bilty_charge, Bilty_Master.grand_total, Bilty_Desc.Packages, Bilty_Desc.Description, Bilty_Desc.Weight FROM Bilty_Master, Bilty_Desc WHERE Bilty_Master.SNO = Bilty_Desc.SNO AND Bilty_Master.SNO = '"+sno+"'";
+
+                        JRDesignQuery newQuery = new JRDesignQuery();
+                        newQuery.setText(billquery);
+                        jasdi.setQuery(newQuery);
+
+                        HashMap<String, Object> para = new HashMap<>();
+                        para.put("Bilty_Master.SNO",sno);
+
+                        JasperReport js=JasperCompileManager.compileReport(jasdi);
+                        //JasperReport js = (JasperReport) JRLoader.loadObject(reportUrl);
+                        JasperPrint jp=JasperFillManager.fillReport(js,para,con);
+                        JasperExportManager.exportReportToPdfFile(jp,"E:\\BiltyBook\\"+sno+".pdf");
+                        JOptionPane.showMessageDialog(null, "YOUR BILTY IS GENERATED SUCCESSFULLY");
+                        dispose();
+        //                WelcomeFrame open = new WelcomeFrame();
+        //                open.setVisible(true);
+
+                        JasperViewer.viewReport(jp, false);
                     }
                     else
                     {
