@@ -39,3 +39,6 @@
 	<field name="Packages" class="java.lang.String"/>
 	<field name="Description" class="java.lang.String"/>
 	<field name="Weight" class="java.lang.String"/>
+
+
+SELECT Bilty_Master.SNO, Bilty_Master.Consignor, Bilty_Master.CR_GSTNO, Bilty_Master.Consignee, Bilty_Master.CN_GSTNO, Bilty_Master.Date_Bill, Bilty_Master.From_City, Bilty_Master.To_City, Bilty_Master.Payment_Status, Bilty_Master.freight, Bilty_Master.hammali, Bilty_Master.bilty_charge, Bilty_Master.grand_total, Bilty_Desc.Packages, Bilty_Desc.Description, Bilty_Desc.Weight FROM Bilty_Master, Bilty_Desc WHERE Bilty_Master.SNO = Bilty_Desc.SNO AND Bilty_Master.SNO = '"+sno+"'"

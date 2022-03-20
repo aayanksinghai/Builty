@@ -58,6 +58,18 @@ public class BuiltyFrame extends javax.swing.JFrame {
             
             txtBilty.setText("5.0");
             
+            txtConsignee.setEnabled(false);
+            txtConsignee_GST.setEnabled(false);
+            txtConsignor.setEnabled(false);
+            txtConsignor_GST.setEnabled(false);
+            
+            txtPackages.setEnabled(false);
+            txtDescription.setEnabled(false);
+            txtWeight.setEnabled(false);
+            
+            txtTo.setEnabled(false);
+            txtFrieght.setEnabled(false);
+            txtHammali.setEnabled(false);
             
             
            }
@@ -864,6 +876,19 @@ public class BuiltyFrame extends javax.swing.JFrame {
                         String ins_qry = "INSERT INTO Bilty_Master (SNO) VALUES ('"+sno+"')";
                         stmt.executeUpdate(ins_qry);
 
+                        txtConsignee.setEnabled(true);
+                        
+                        txtConsignee_GST.setEnabled(true);
+                        txtConsignor.setEnabled(true);
+                        txtConsignor_GST.setEnabled(true);
+
+                        txtPackages.setEnabled(true);
+                        txtDescription.setEnabled(true);
+                        txtWeight.setEnabled(true);
+
+                        txtTo.setEnabled(true);
+                        txtFrieght.setEnabled(true);
+                        txtHammali.setEnabled(true);
                         sno_flag = 1;
                         txtTo.requestFocusInWindow();
                     }
