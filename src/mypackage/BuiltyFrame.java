@@ -52,7 +52,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
            
             
             //Fetching Current Date
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy   HH:mm:ss");
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
             txtDate.setText(df.format(date));
             
@@ -66,12 +66,12 @@ public class BuiltyFrame extends javax.swing.JFrame {
             txtPackages.setEnabled(false);
             txtDescription.setEnabled(false);
             txtWeight.setEnabled(false);
+            txtRate.setEnabled(false);
             
             txtTo.setEnabled(false);
             txtFrieght.setEnabled(false);
             txtHammali.setEnabled(false);
-            
-            
+             
            }
         catch(Exception e)
         {
@@ -133,6 +133,8 @@ public class BuiltyFrame extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txtPackages = new javax.swing.JTextField();
         txtDescription = new javax.swing.JTextField();
+        txtRate = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         txtWeight = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
         lblValidate = new javax.swing.JLabel();
@@ -267,6 +269,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
 
         txtTo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        txtFrieght.setEditable(false);
         txtFrieght.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtFrieght.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -433,20 +436,23 @@ public class BuiltyFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Packages", "Description", "Weight Actual"
+                "Description", "Packages", "Weight Actual", "Rate "
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
+        tblData.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblData);
         if (tblData.getColumnModel().getColumnCount() > 0) {
-            tblData.getColumnModel().getColumn(0).setPreferredWidth(5);
+            tblData.getColumnModel().getColumn(0).setMinWidth(200);
+            tblData.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tblData.getColumnModel().getColumn(0).setMaxWidth(200);
         }
 
         btnCalculate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -485,6 +491,16 @@ public class BuiltyFrame extends javax.swing.JFrame {
 
         txtDescription.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        txtRate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtRate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRateKeyTyped(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel19.setText("Rate:");
+
         txtWeight.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtWeight.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -499,6 +515,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel19)
                     .addComponent(jLabel16)
                     .addComponent(jLabel15)
                     .addComponent(jLabel17))
@@ -506,8 +523,9 @@ public class BuiltyFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtPackages)
                     .addComponent(txtDescription)
+                    .addComponent(txtRate, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addComponent(txtWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,15 +534,19 @@ public class BuiltyFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtPackages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                    .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                    .addComponent(jLabel19)
+                    .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         btnDelete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -550,17 +572,16 @@ public class BuiltyFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(176, Short.MAX_VALUE)
+                        .addGap(162, 162, 162)
                         .addComponent(btnCreate)
-                        .addGap(147, 147, 147)
-                        .addComponent(btnDelete)
-                        .addGap(206, 206, 206)))
+                        .addGap(152, 152, 152)
+                        .addComponent(btnDelete)))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCalculate)
@@ -583,13 +604,13 @@ public class BuiltyFrame extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDelete)
-                            .addComponent(btnCreate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 24, Short.MAX_VALUE))
+                            .addComponent(btnCreate)
+                            .addComponent(btnDelete))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
@@ -617,7 +638,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
             int i = JOptionPane.showConfirmDialog(null,"Are you sure, you want to clear this bill?");
             if(i==0)
             {
-                    String sno = txtSno.getText().toString();
+                    String sno = txtSno.getText().trim();
                     //txtBilty.setText("");
                     txtConsignor_GST.setText("");
                     txtConsignee.setText("");
@@ -629,6 +650,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
                     txtSno.setText("");
                     txtTo.setText("");
                     txtWeight.setText("");
+                    txtRate.setText("");
                     txtPackages.setText("");
                     txtDescription.setText("");
                     
@@ -737,7 +759,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
                         //reportFile = new FileInputStream(reportUrl);
                         JasperDesign jasdi=JRXmlLoader.load(reportFile);
                         //String billquery = "SELECT USER.BILLNO, USER.NAME, USER.CONTACT_NO, USER.ADDRESS, USER.GSTIN, USER.BILL_DATE, USER.TOTAL_AMOUNT, BILL.HSN_CODE, BILL.ITEM_NAME, BILL.QUANTITY, BILL.TAX_SLAB, BILL.SELLING_PRICE, BILL.BASIC_PRICE, BILL.CGST, BILL.SGST, BILL.TOTAL_PRICE FROM BILL, USER WHERE USER.BILLNO = BILL.BILLNO AND SNO = '"+sno+"'";
-                        String billquery = "SELECT Bilty_Master.SNO, Bilty_Master.Consignor, Bilty_Master.CR_GSTNO, Bilty_Master.Consignee, Bilty_Master.CN_GSTNO, Bilty_Master.Date_Bill, Bilty_Master.From_City, Bilty_Master.To_City, Bilty_Master.Payment_Status, Bilty_Master.freight, Bilty_Master.hammali, Bilty_Master.bilty_charge, Bilty_Master.grand_total, Bilty_Desc.Packages, Bilty_Desc.Description, Bilty_Desc.Weight FROM Bilty_Master, Bilty_Desc WHERE Bilty_Master.SNO = Bilty_Desc.SNO AND Bilty_Master.SNO = '"+sno+"'";
+                        String billquery = "SELECT Bilty_Master.SNO, Bilty_Master.Consignor, Bilty_Master.CR_GSTNO, Bilty_Master.Consignee, Bilty_Master.CN_GSTNO, Bilty_Master.Date_Bill, Bilty_Master.From_City, Bilty_Master.To_City, Bilty_Master.Payment_Status, Bilty_Master.freight, Bilty_Master.hammali, Bilty_Master.bilty_charge, Bilty_Master.grand_total, Bilty_Desc.Packages, Bilty_Desc.Description, Bilty_Desc.Weight, Bilty_Desc.Rate FROM Bilty_Master, Bilty_Desc WHERE Bilty_Master.SNO = Bilty_Desc.SNO AND Bilty_Master.SNO = '"+sno+"'";
 
                         JRDesignQuery newQuery = new JRDesignQuery();
                         newQuery.setText(billquery);
@@ -790,20 +812,42 @@ public class BuiltyFrame extends javax.swing.JFrame {
                 String packg = txtPackages.getText().trim();
                 String descip = txtDescription.getText().trim();
                 String weight = txtWeight.getText().trim();
+                String rate = txtRate.getText().trim();
 
-                if(!(sno.equals("") || packg.equals("") || descip.equals("") || weight.equals("")))
+                if(!(sno.equals("") || packg.equals("") || descip.equals("") || weight.equals("") || rate.equals("")))
                 {
                 lblValidate.setText("");
-                String ins_qry = "INSERT INTO BILTY_DESC VALUES ('"+sno+"', '"+packg+"','"+descip+"', '"+weight+"')";
+                String ins_qry = "INSERT INTO BILTY_DESC VALUES ('"+sno+"', '"+packg+"','"+descip+"', '"+weight+"', '"+rate+"')";
                 stmt.executeUpdate(ins_qry);
 
                 DefaultTableModel tbl = (DefaultTableModel) tblData.getModel();
                  tbl.insertRow(tbl.getRowCount(), new Object[]
-                 {packg, descip, weight});
-            
+                 {descip, packg, weight, rate});
+                 
+//                 double item_rate = 0;
+//                 for(int i = 0; i < tbl.getRowCount(); i++)
+//                 {
+//                    item_rate +=  (Double.parseDouble(packg)) * (Double.parseDouble(rate));
+//                 }
+                 //Calculating Freight
+                 double item_rate = (Double.parseDouble(packg)) * (Double.parseDouble(rate));
+                 
+                 String freight = txtFrieght.getText().trim();
+                 
+                 if(!freight.equals(""))
+                 {
+                     item_rate += (Double.parseDouble(freight));
+                 }        
+                     
+                 String up_qry = "UPDATE Bilty_Master SET freight = "+item_rate+" WHERE SNO = '"+sno+"'";
+                 stmt.executeUpdate(up_qry);
+                 
+                txtFrieght.setText(item_rate + "");
+                 
                 txtPackages.setText("");
                 txtDescription.setText("");
                 txtWeight.setText("");
+                txtRate.setText("");
                 }
                 else
                 {
@@ -837,7 +881,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
             
             if(select != -1)
             {
-            String descrip =  (tblData.getModel().getValueAt(select,1).toString());
+            String descrip =  (tblData.getModel().getValueAt(select,0).toString());
             String qry = "DELETE FROM Bilty_Desc WHERE SNO ='"+sno+"' AND Description='"+descrip+"'";
             stmt.executeUpdate(qry);
 
@@ -885,6 +929,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
                         txtPackages.setEnabled(true);
                         txtDescription.setEnabled(true);
                         txtWeight.setEnabled(true);
+                        txtRate.setEnabled(true);
 
                         txtTo.setEnabled(true);
                         txtFrieght.setEnabled(true);
@@ -976,7 +1021,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_txtPackagesKeyTyped
 
-    private void txtWeightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyTyped
+    private void txtRateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRateKeyTyped
         // TODO add your handling code here:
         char vchar = evt.getKeyChar();
       
@@ -984,6 +1029,10 @@ public class BuiltyFrame extends javax.swing.JFrame {
        {
            evt.consume();
        }
+    }//GEN-LAST:event_txtRateKeyTyped
+
+    private void txtWeightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyTyped
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtWeightKeyTyped
 
     /**
@@ -1038,6 +1087,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1067,6 +1117,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtGrand;
     private javax.swing.JTextField txtHammali;
     private javax.swing.JTextField txtPackages;
+    private javax.swing.JTextField txtRate;
     private javax.swing.JTextField txtSno;
     private javax.swing.JTextField txtTo;
     private javax.swing.JTextField txtWeight;
