@@ -58,6 +58,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
             
             txtBilty.setText("5.0");
             
+            txtDate.setEnabled(false);
             txtConsignee.setEnabled(false);
             txtConsignee_GST.setEnabled(false);
             txtConsignor.setEnabled(false);
@@ -260,7 +261,6 @@ public class BuiltyFrame extends javax.swing.JFrame {
             }
         });
 
-        txtDate.setEditable(false);
         txtDate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         txtFrom.setEditable(false);
@@ -539,7 +539,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
                     .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
                 .addGap(21, 21, 21)
@@ -922,6 +922,7 @@ public class BuiltyFrame extends javax.swing.JFrame {
 
                         txtConsignee.setEnabled(true);
                         
+                        txtDate.setEnabled(true);
                         txtConsignee_GST.setEnabled(true);
                         txtConsignor.setEnabled(true);
                         txtConsignor_GST.setEnabled(true);
